@@ -1,14 +1,14 @@
 -- Database Queries
 
 -- Find all customers with postal code 1010
-select *
-from Customers
-where 'PostalCode' = '1010'
+SELECT * 
+FROM Customers
+WHERE "PostalCode" = "1010"
 
 -- Find the phone number for the supplier with the id 11
-select 'Phone'
-from Suppliers
-where 'SupplierID' = 11
+SELECT "Phone"
+FROM Suppliers
+WHERE "SupplierID" = "11"
 
 -- List first 10 orders placed, sorted descending by the order date
 SELECT *
@@ -24,8 +24,8 @@ or Country = 'Brazil'
 
 -- Add a customer record for "The Shire", the contact name is "Bilbo Baggins" the address is -"1 Hobbit-Hole" in "Bag End", postal code "111" and the country is "Middle Earth"
 insert into Customers
-(CustomerName, ContactName, Adress, City, PostalCode, Country)
-values ('The Shire', 'Bilbo Baggins', '1 HobbitHole', 'Bagend', '111', 'MiddleEarth');
+(CustomerName, ContactName, Address, City, PostalCode, Country)
+values ('The Shire', 'Bilbo Baggins', '1 HobbitHole', 'Bagend', '111', 'MiddleEarth')
 
 -- Update Bilbo Baggins record so that the postal code changes to "11122"
 update Customers

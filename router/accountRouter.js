@@ -32,6 +32,49 @@ router.get("/:id", (req, res) => {
   });
 
 
+//Add account
+router.post('/', (req, res) => {
+    const accData = req.body
+    db('accounts')
+    .insert(accData, 'id')
+    .then(newId => {
+        const id = newId[0];
+        db('accounts')
+        .where({id})
+        .first()
+        .then(newAcc => {
+            res.status(200).json(newAcc)
+        })
+        .catch(error => {
+            res.status(500).json({error: 'error'})
+        })
+    }) 
+
+});
+
+
+//updating accounts using patch
+router.patch('/:id', (req, res) => {
+    const changes = req.body;
+    const {id} = req.params
+    db('accounts')
+    .where({id})
+    .update(changes)
+    .then(count => {
+        if (count > 0) {
+            res.status(200).json({message: 'update success'})
+        } else {
+            res.status(404).json({message: 'error, update unsuccessful'})
+        }
+    })
+    .catch(error => {
+        res.status(500).json({error: 'error'})
+    })
+})
+
+
+//
+
 
 
 module.exports = router; 

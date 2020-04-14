@@ -12,7 +12,7 @@ server.use(express.json());
 server.use('api/accounts', Account);
 
 server.get('/', (req, res) => {
-    res.status(200).json({api: ''})
+    res.status(200).json({api: 'up'})
 });
 
 module.exports = server;

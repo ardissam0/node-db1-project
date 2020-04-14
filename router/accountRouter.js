@@ -73,8 +73,22 @@ router.patch('/:id', (req, res) => {
 })
 
 
-//
-
+//delete account
+router.delete('/:id', (req,res) => {
+    db('accounts')
+    .where('id', req.params.id)
+    .del()
+    .then(count => {
+    if (count) {
+        res.status(200).json({message: 'deleted successfully'})
+    } else {
+        res.status(404).json({message: 'error, account not deleted'})
+    }
+}) 
+.catch(error => {
+    res.status(500).json({error: 'error'})
+})
+})
 
 
 module.exports = router; 
